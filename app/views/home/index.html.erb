@@ -1,0 +1,31 @@
+<h3>Pagina principal</h3>
+
+<ul>
+	
+<% @produtos.each do |produto|%>
+<li>
+	<div><b>Sku:</b><%= produto.sku%></div>
+	
+
+	
+	<div><b>Produto:</b><%= produto.produto%></div>
+	
+	
+	
+     <div><b>Quantidade:</b><%= produto.quantidade%></div>
+	
+	<div><b>Vendas:</b><%= produto.vendas%></div>
+	
+	<div><b>Valor:</b><%= produto.valor%></div>
+	
+	<div><b>Visitas:</b><%= produto.visitas%></div>
+
+	<div><b>Anuncio:</b><%= produto.anuncio%></div>
+
+    
+
+</li>
+
+<%end%>
+</ul>
+
