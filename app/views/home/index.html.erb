@@ -1,31 +1,145 @@
 <h3>Pagina principal</h3>
 
-<ul>
-	
+
+<style type="text/css">
+	table{
+		border: 1px solid #ccc;
+	}
+
+
+	table tr th{
+		border: 1px solid #ccc;
+		font-weight: bold;
+	}
+
+
+	table tr td{
+		border: 1px solid #ccc;
+		font-weight: bold;
+	}
+</style>
+<fieldset>
+  	<legend>Cadastro</legend>
+
+  
+	<%
+    rota = "/incluir"
+
+     anuncio = ""
+     sku = ""
+     produto = ""
+     visitas = ""
+     vendas = ""
+     valor = ""
+     quantidade = ""
+
+
+
+
+
+
+
+
+    if @produto.present?
+       rota = "/#{@produto.id}/salvar"
+       anuncio = @produto.anuncio
+       sku = @produto.sku
+        produto = @produto.produto
+       visitas = @produto.visitas
+        valor = @produto.valor
+       quantidade = @produto.quantidade    	
+    end
+
+   %>
+	<form action="<%= rota %>" method="Post">
+
+
+
+
+   <div>
+   	 <label  for="anuncio">Anucio: </label>
+   	 <input type="text"  id="anuncio"  value="<%= anuncio %>" name="anuncio"  >
+   </div>
+
+   <div>
+   	<label for="sku"> Sku:</label>
+      <input type="text" id="sku"value="<%= sku %> " name="sku">	
+   </div>
+   <div>
+   	<div>
+   	 <label  for="produto">Produto </label>
+   	 <input type="text"  id="produto"  value="<%= produto %>" name="produto"  >
+   </div>
+
+   <div>
+   	<label for="Visitas"> Visitas :</label>
+      <input type="text" id="visitas"value="<%= visitas %> " name="visitas">	
+   </div>
+     <div>
+   	<label for="Vendas"> Vendas :</label>
+      <input type="text" id="vendas"value="<%= vendas %> " name="vendas">	
+   </div>
+
+        <div>
+   	<label for="quantidade"> Quantidade:</label>
+      <input type="text" id="quantidade"value="<%= quantidade %> " name="quantidade">	
+   </div>
+
+   
+	  <input type="submit" value="Enviar">
+   </div>
+
+</form>
+
+
+</fieldset><br><br>
+
+<h1>  Tabela de Produtos </h1>
+<br><br>
+<table>
+   <tr>
+	<th>Anuncio</th>
+    <th>Sku</th>
+    <th>Produto</th>
+    <th>Visita</th>
+
+    <th>Vendas</th>
+    <th>Valor</th>
+
+    <th>Quantidade</th>
+
+    <th>Alterar</th>
+   <th>Excluir</th>
+
+</tr>
 <% @produtos.each do |produto|%>
-<li>
-	<div><b>Sku:</b><%= produto.sku%></div>
+
+<tr>
+	<td><%= produto.anuncio%></td>
+	 <td><%= produto.sku%></td>
 	
 
 	
-	<div><b>Produto:</b><%= produto.produto%></div>
+	 <td><%= produto.produto%></td>
+	
+	 <td><%= produto.visitas%></td>
 	
 	
+	 <td><%= produto.vendas%></td>
 	
-     <div><b>Quantidade:</b><%= produto.quantidade%></div>
+	 <td><%= produto.valor%></td>
 	
-	<div><b>Vendas:</b><%= produto.vendas%></div>
 	
-	<div><b>Valor:</b><%= produto.valor%></div>
-	
-	<div><b>Visitas:</b><%= produto.visitas%></div>
 
-	<div><b>Anuncio:</b><%= produto.anuncio%></div>
+	
+    <td><%= produto.quantidade%></td>
 
+      <td><a href="/produto/<%= produto.id %>/alterar">Alterar</a></td>
+      <td><a href="/produto/<%= produto.id %>/excluir">Excluir</a></td>
     
 
-</li>
+</tr>
 
 <%end%>
-</ul>
+</table>
 
